@@ -3,7 +3,8 @@
     x:Class="ShopConnect.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:ShopConnect.Pages.Sale"
+    xmlns:Sale="clr-namespace:ShopConnect.Pages.Sale"
+    xmlns:Menu="clr-namespace:ShopConnect.Pages.Menu"
     Shell.NavBarIsVisible="False"
     Shell.FlyoutBehavior="{OnIdiom Desktop=Locked,Phone=Flyout,Tablet=Locked,TV=Locked,Watch=Locked}"
     FlyoutBackgroundColor="{AppThemeBinding Dark={StaticResource PrimaryDark}, Light={StaticResource WhitePrimary}}"
@@ -12,42 +13,57 @@
 
     <Shell.ItemTemplate>
         <DataTemplate>
-            <Border BackgroundColor="{StaticResource RedDark}" HeightRequest="40" WidthRequest="240">
+            <Border BackgroundColor="{StaticResource BlueDark}" HeightRequest="40" WidthRequest="240">
                 <Grid ColumnDefinitions="50,*,*" ColumnSpacing="10">
-                    <ImageButton Grid.Column="0" Source="{Binding Icon}" IsEnabled="False" BackgroundColor="Transparent" VerticalOptions="Center" WidthRequest="50" HeightRequest="50" />
-                    <Button Grid.Column="1" Text="{Binding Title}" IsEnabled="False" BackgroundColor="Transparent" TextColor="White" WidthRequest="100"></Button>
-                    <Button Grid.Column="2" Text="→" IsEnabled="False" TextColor="White" BackgroundColor="Transparent" HorizontalOptions="End" FontSize="20"></Button>
+                    <ImageButton Grid.Column="0" Source="{Binding Icon}" BorderColor="Transparent" IsEnabled="False" BackgroundColor="Transparent" VerticalOptions="Center" WidthRequest="50" HeightRequest="50" />
+                    <Button Grid.Column="1" BorderColor="Transparent" Text="{Binding Title}" IsEnabled="False" BackgroundColor="Transparent" TextColor="White" WidthRequest="100"></Button>
+                    <Button Grid.Column="2" BorderColor="Transparent" Text="→" IsEnabled="False" TextColor="White" BackgroundColor="Transparent" HorizontalOptions="End" FontSize="20"></Button>
                 </Grid>
             </Border>
         </DataTemplate>
     </Shell.ItemTemplate>
 
     <Shell.FlyoutHeader>
-        <Border HeightRequest="150">
-            <VerticalStackLayout IsEnabled="True">
-                <CarouselView x:Name="PhotoCarousel" ItemsSource="{Binding Photos}" HeightRequest="150">
-                    <CarouselView.ItemTemplate>
-                        <DataTemplate>
-                            <Grid>
-                                <Image Source="{Binding}" Aspect="AspectFill" />
-                            </Grid>
-                        </DataTemplate>
-                    </CarouselView.ItemTemplate>
-                </CarouselView>
-            </VerticalStackLayout>
-        </Border>
+        <StackLayout HeightRequest="200">
+            <Border HeightRequest="150" Margin="10">
+                <VerticalStackLayout IsEnabled="True">
+                    <CollectionView x:Name="PhotoCarousel" ItemsSource="{Binding Photos}" HeightRequest="150" ItemsLayout="VerticalGrid, 1">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Image Source="{Binding}" Aspect="Fill" HorizontalOptions="Center"/>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+            </Border>
+            <Label Text="Vega Yazılım - Özfiliz" HorizontalOptions="Center"></Label>
+        </StackLayout>
     </Shell.FlyoutHeader>
 
     <ShellContent
         Icon="dotnet_bot.png"
-        Title="Nakit Satış"
-        ContentTemplate="{DataTemplate local:CashSalePage}"
-        Route="CashSalePage" />
+        Title="Ana Menü"
+        ContentTemplate="{DataTemplate Menu:Menu}"
+        Route="Menu" />
 
     <ShellContent
         Icon="dotnet_bot.png"
         Title="Nakit Satış"
-        ContentTemplate="{DataTemplate local:CashSalePage}"
+        ContentTemplate="{DataTemplate Sale:CashSalePage}"
+        Route="CashSalePage" />
+
+    <ShellContent
+        Icon="dotnet_bot.png"
+        Title="Ana Menü"
+        ContentTemplate="{DataTemplate Menu:Menu}"
+        Route="Menu" />
+
+    <ShellContent
+        Icon="dotnet_bot.png"
+        Title="Nakit Satış"
+        ContentTemplate="{DataTemplate Sale:CashSalePage}"
         Route="CashSalePage" />
 
 </Shell>
