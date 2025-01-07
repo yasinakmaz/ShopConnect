@@ -4,5 +4,28 @@
              x:Class="ShopConnect.Pages.Sale.CashSalePage"
              Title="CashSalePage">
 
-    <Button Text="asd"></Button>
+    <Grid x:Name="GrdMain">
+        <Grid x:Name="GrdFill" RowDefinitions=".20*,.70*,.10*">
+            <Grid x:Name="GrdTop" Grid.Row="0" Margin="10">
+                <VerticalStackLayout>
+                    <Grid ColumnSpacing="10" ColumnDefinitions=".20*,*,.20*">
+                        <SearchBar Grid.Column="0" Placeholder="Seçim"></SearchBar>
+                        <Entry Grid.Column="1" Placeholder="Unvan"></Entry>
+                    </Grid>
+                    
+                    <HorizontalStackLayout>
+                        
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </Grid>
+
+            <Grid x:Name="GrdCenter" Grid.Row="1" BackgroundColor="NavajoWhite">
+                
+            </Grid>
+
+            <Grid x:Name="GrdBot" Grid.Row="2">
+                
+            </Grid>
+        </Grid>
+    </Grid>
 </ContentPage>

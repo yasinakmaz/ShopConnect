@@ -50,20 +50,10 @@
 
     <ShellContent
         Icon="dotnet_bot.png"
-        Title="Nakit Satış"
+        Title="Peşin Satış"
         ContentTemplate="{DataTemplate Sale:CashSalePage}"
         Route="CashSalePage" />
 
-    <ShellContent
-        Icon="dotnet_bot.png"
-        Title="Ana Menü"
-        ContentTemplate="{DataTemplate Menu:Menu}"
-        Route="Menu" />
-
-    <ShellContent
-        Icon="dotnet_bot.png"
-        Title="Nakit Satış"
-        ContentTemplate="{DataTemplate Sale:CashSalePage}"
-        Route="CashSalePage" />
+   
 
 </Shell>
