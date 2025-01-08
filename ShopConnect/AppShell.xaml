@@ -54,6 +54,4 @@
         ContentTemplate="{DataTemplate Sale:CashSalePage}"
         Route="CashSalePage" />
 
-   
-
 </Shell>
