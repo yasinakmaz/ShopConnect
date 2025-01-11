@@ -2,16 +2,22 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ShopConnect.Pages.Sale.CashSalePage"
+             xmlns:local="clr-namespace:ShopConnect.Service"
              Title="CashSalePage">
+
+    <Shell.SearchHandler>
+        <local:CustomSearchHandler Placeholder="Ara..." ShowsResults="True"></local:CustomSearchHandler>
+    </Shell.SearchHandler>
 
     <Grid x:Name="GrdMain">
         <Grid x:Name="GrdFill" RowDefinitions=".20*,.70*,.10*">
             <Grid x:Name="GrdTop" Grid.Row="0" Margin="10">
                 <VerticalStackLayout Spacing="10">
-                    <Grid ColumnSpacing="10" ColumnDefinitions=".40*,*,.20*">
+                    <Grid ColumnSpacing="10" ColumnDefinitions=".40*,.40*,*,.20*">
                         <SearchBar Grid.Column="0" Placeholder="Seçim"></SearchBar>
-                        <Entry Grid.Column="1" Placeholder="Unvan"></Entry>
-                        <Entry Grid.Column="2" Placeholder="Kod"></Entry>
+                        <SearchBar Grid.Column="1" Placeholder="Barkod"></SearchBar>
+                        <Entry Grid.Column="2" Placeholder="Unvan"></Entry>
+                        <Entry Grid.Column="3" Placeholder="Kod"></Entry>
                     </Grid>
                     
                     <Grid ColumnSpacing="10" ColumnDefinitions=".20*,.20*,.25*,.25*,.25*,.25*,.25*">
@@ -24,22 +30,40 @@
                         <Entry Grid.Column="6" Placeholder="Adres"></Entry>
                     </Grid>
 
-                    <Grid ColumnSpacing="10" ColumnDefinitions=".50*,.40*,.30*,*">
+                    <Grid ColumnSpacing="10" ColumnDefinitions=".50*,.40*,.30*,.35*,*">
                         <!-- Fatura veya fiş --> <Picker Grid.Column="0"></Picker>
                         <Entry Grid.Column="1" Placeholder="Belge Numarası"></Entry>
-                        <Button Grid.Column="2" Text="Borç Sorgula"></Button>
-                        <Button Grid.Column="4" Text="Yeni Cari Kart" HorizontalOptions="End"></Button>
+                        <Entry Grid.Column="2" Placeholder="Tel No"></Entry>
+                        <Button Grid.Column="3" Text="Borç Sorgula"></Button>
+                        <Button Grid.Column="4" Text="Cari Kaydet" HorizontalOptions="Start"></Button>
+                        <Button Grid.Column="5" Text="Yeni Cari Kart" HorizontalOptions="End"></Button>
                     </Grid>
 
                 </VerticalStackLayout>
             </Grid>
 
-            <Grid x:Name="GrdCenter" Grid.Row="1" BackgroundColor="NavajoWhite">
-                
+            <Grid x:Name="GrdCenter" Grid.Row="1">
+                <Border Stroke="White" StrokeThickness="1" StrokeShape="RoundRectangle 10">
+                    <Grid RowDefinitions="30,*">
+                        <Grid Grid.Row="0" ColumnDefinitions="*,*,*,*,*" ColumnSpacing="10">
+                            <Button Grid.Column="0" Text="Stok Adı"></Button>
+                            <Button Grid.Column="1" Text="Miktar"></Button>
+                            <Button Grid.Column="2" Text="Birim Fiyat"></Button>
+                            <Button Grid.Column="3" Text="İskonto"></Button>
+                            <Button Grid.Column="4" Text=""></Button>
+                        </Grid>
+                    </Grid>
+                </Border>
             </Grid>
 
-            <Grid x:Name="GrdBot" Grid.Row="2">
-                
+            <Grid x:Name="GrdBot" Grid.Row="2" Margin="10">
+                <Grid ColumnDefinitions="*,*,*,*,*" ColumnSpacing="10">
+                    <Button Grid.Column="0" Text="Nakit"></Button>
+                    <Button Grid.Column="1" Text="Kredi Kartı"></Button>
+                    <Button Grid.Column="2" Text="Tahsilat"></Button>
+                    <Button Grid.Column="3" Text="Fiş Beklet"></Button>
+                    <Button Grid.Column="4" Text="Bekleyen Fişler"></Button>
+                </Grid>
             </Grid>
         </Grid>
     </Grid>
