@@ -6,18 +6,17 @@
              Title="CashSalePage">
 
     <Shell.SearchHandler>
-        <local:CustomSearchHandler Placeholder="Ara..." ShowsResults="True"></local:CustomSearchHandler>
+        <local:CustomSearchHandler Placeholder="Cari Seçimi Yapınız..." ShowsResults="True"></local:CustomSearchHandler>
     </Shell.SearchHandler>
 
     <Grid x:Name="GrdMain">
         <Grid x:Name="GrdFill" RowDefinitions=".20*,.70*,.10*">
             <Grid x:Name="GrdTop" Grid.Row="0" Margin="10">
                 <VerticalStackLayout Spacing="10">
-                    <Grid ColumnSpacing="10" ColumnDefinitions=".40*,.40*,*,.20*">
-                        <SearchBar Grid.Column="0" Placeholder="Seçim"></SearchBar>
-                        <SearchBar Grid.Column="1" Placeholder="Barkod"></SearchBar>
-                        <Entry Grid.Column="2" Placeholder="Unvan"></Entry>
-                        <Entry Grid.Column="3" Placeholder="Kod"></Entry>
+                    <Grid ColumnSpacing="10" ColumnDefinitions="*,*,.20*">
+                        <SearchBar Grid.Column="0" Placeholder="Barkod"></SearchBar>
+                        <Entry Grid.Column="1" Placeholder="Unvan"></Entry>
+                        <Entry Grid.Column="2" Placeholder="Kod"></Entry>
                     </Grid>
                     
                     <Grid ColumnSpacing="10" ColumnDefinitions=".20*,.20*,.25*,.25*,.25*,.25*,.25*">
@@ -50,7 +49,7 @@
                             <Button Grid.Column="1" Text="Miktar"></Button>
                             <Button Grid.Column="2" Text="Birim Fiyat"></Button>
                             <Button Grid.Column="3" Text="İskonto"></Button>
-                            <Button Grid.Column="4" Text=""></Button>
+                            <Button Grid.Column="4" Text="Tutar"></Button>
                         </Grid>
                     </Grid>
                 </Border>
@@ -60,7 +59,7 @@
                 <Grid ColumnDefinitions="*,*,*,*,*" ColumnSpacing="10">
                     <Button Grid.Column="0" Text="Nakit"></Button>
                     <Button Grid.Column="1" Text="Kredi Kartı"></Button>
-                    <Button Grid.Column="2" Text="Tahsilat"></Button>
+                    <Button Grid.Column="2" Clicked="OnShowPopupClicked" Text="Tahsilat"></Button>
                     <Button Grid.Column="3" Text="Fiş Beklet"></Button>
                     <Button Grid.Column="4" Text="Bekleyen Fişler"></Button>
                 </Grid>

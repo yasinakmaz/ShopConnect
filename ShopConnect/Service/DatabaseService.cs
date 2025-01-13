@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ShopConnect.Service
+﻿namespace ShopConnect.Service
 {
     public class DatabaseService
     {
-        private readonly string connectionString = "Data Source=.;Initial Catalog=VEGADB;User ID=sa;Password=123456a.A;Trust Server Certificate=True";
+        private readonly string connectionString = "Data Source=10.0.0.84;Initial Catalog=VEGADB;User ID=sa;Password=123456a.A;Trust Server Certificate=True";
 
         public async Task<List<string>> SearchItemsAsync(string query)
         {

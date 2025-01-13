@@ -5,7 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:Sale="clr-namespace:ShopConnect.Pages.Sale"
     xmlns:Menu="clr-namespace:ShopConnect.Pages.Menu"
-    Shell.NavBarIsVisible="False"
+    Shell.NavBarIsVisible="{OnIdiom Desktop=False,Phone=True,Tablet=True,Watch=True,TV=True,Default=False}"
     Shell.FlyoutBehavior="{OnIdiom Desktop=Locked,Phone=Flyout,Tablet=Locked,TV=Locked,Watch=Locked}"
     FlyoutBackgroundColor="{AppThemeBinding Dark={StaticResource PrimaryDark}, Light={StaticResource WhitePrimary}}"
     Shell.FlyoutWidth="270"
@@ -53,5 +53,19 @@
         Title="Peşin Satış"
         ContentTemplate="{DataTemplate Sale:CashSalePage}"
         Route="CashSalePage" />
+
+    <TabBar>
+        <ShellContent
+    Icon="dotnet_bot.png"
+    Title="Ana Menü"
+    ContentTemplate="{DataTemplate Menu:Menu}"
+    Route="Menu" />
+
+        <ShellContent
+    Icon="dotnet_bot.png"
+    Title="Peşin Satış"
+    ContentTemplate="{DataTemplate Sale:CashSalePage}"
+    Route="CashSalePage" />
+    </TabBar>
 
 </Shell>

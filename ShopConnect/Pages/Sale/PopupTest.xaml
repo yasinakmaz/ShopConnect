@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<comm:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:comm="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui"
+             CanBeDismissedByTappingOutsideOfPopup="False"
+             Size="1000,500"
+             x:Class="ShopConnect.Pages.Sale.PopupTest">
+
+    <Border BackgroundColor="#192a56" StrokeShape="RoundRectangle 10" Stroke="#2f3640" StrokeThickness="1">
+        <ScrollView>
+            <VerticalStackLayout Padding="20" Spacing="15">
+
+                <!-- Müşteri Bilgileri -->
+                <Label Text="Müşteri Bilgileri" FontSize="18" FontAttributes="Bold" />
+                <Entry Placeholder="Ad" x:Name="CustomerNameEntry" />
+                <Entry Placeholder="Soyad" x:Name="CustomerSurnameEntry" />
+                <Entry Placeholder="Telefon" x:Name="CustomerPhoneEntry" Keyboard="Telephone" />
+
+                <!-- Tahsilat Tutarı -->
+                <Label Text="Tahsilat Tutarı" FontSize="18" FontAttributes="Bold" />
+                <Entry Placeholder="Tutar" x:Name="AmountEntry" Keyboard="Numeric" />
+
+                <!-- Ödeme Yöntemi -->
+                <Label Text="Ödeme Yöntemi" FontSize="18" FontAttributes="Bold" />
+                <Picker x:Name="PaymentMethodPicker">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Nakit</x:String>
+                            <x:String>Kredi Kartı</x:String>
+                            <x:String>Banka Havalesi</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+
+                <!-- Ödeme Tarihi -->
+                <Label Text="Ödeme Tarihi" FontSize="18" FontAttributes="Bold" />
+                <DatePicker x:Name="PaymentDatePicker" />
+
+                <!-- Butonlar -->
+                <HorizontalStackLayout Spacing="10">
+                    <Button Text="Kaydet" BackgroundColor="Green" TextColor="White" />
+                    <Button Text="İptal" BackgroundColor="Red" TextColor="White" />
+                </HorizontalStackLayout>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </Border>
+</comm:Popup> 
