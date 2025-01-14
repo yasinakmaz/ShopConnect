@@ -6,7 +6,7 @@
              Title="CashSalePage">
 
     <Shell.SearchHandler>
-        <local:CustomSearchHandler Placeholder="Cari Seçimi Yapınız..." ShowsResults="True"></local:CustomSearchHandler>
+        <SearchHandler ShowsResults="True"/>
     </Shell.SearchHandler>
 
     <Grid x:Name="GrdMain">

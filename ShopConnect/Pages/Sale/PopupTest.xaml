@@ -7,7 +7,7 @@
              x:Class="ShopConnect.Pages.Sale.PopupTest">
 
     <Border BackgroundColor="#192a56" StrokeShape="RoundRectangle 10" Stroke="#2f3640" StrokeThickness="1">
-        <ScrollView>
+        <ScrollView VerticalScrollBarVisibility="Never">
             <VerticalStackLayout Padding="20" Spacing="15">
 
                 <!-- Müşteri Bilgileri -->
