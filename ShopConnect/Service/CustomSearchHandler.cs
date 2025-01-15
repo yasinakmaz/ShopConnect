@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ShopConnect.Models;
 
 namespace ShopConnect.Service
 {
@@ -13,22 +9,6 @@ namespace ShopConnect.Service
         public CustomSearchHandler()
         {
             databaseService = new DatabaseService();
-
-            // Öğe şablonu ekle
-            ItemTemplate = new DataTemplate(() =>
-            {
-                var label = new Label
-                {
-                    Margin = new Thickness(10),
-                    FontSize = 16
-                };
-                label.SetBinding(Label.TextProperty, ".");
-
-                return new Grid
-                {
-                    Children = { label }
-                };
-            });
         }
 
         protected override async void OnQueryChanged(string oldValue, string newValue)
@@ -49,9 +29,9 @@ namespace ShopConnect.Service
         {
             base.OnItemSelected(item);
 
-            if (item is string selectedItem)
+            if (item is Cari selectedCari)
             {
-                Application.Current.MainPage.DisplayAlert("Seçilen Öğe", selectedItem, "Tamam");
+                Application.Current.MainPage.DisplayAlert("Seçilen Cari", $"Firma: {selectedCari.FirmaAdi}\nYetkili: {selectedCari.Yetkili}", "Tamam");
             }
         }
     }

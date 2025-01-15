@@ -9,8 +9,8 @@ public partial class PopupTest : Popup
 		InitializeComponent();
 	}
 
-    private async void Button_Clicked(object sender, EventArgs e)
+    private void Button_Clicked(object sender, EventArgs e)
     {
-	    await CloseAsync();
+	    CloseAsync();
     }
 }

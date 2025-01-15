@@ -1,24 +1,40 @@
-﻿namespace ShopConnect.Service
+﻿using ShopConnect.Models;
+
+namespace ShopConnect.Service
 {
     public class DatabaseService
     {
-        private readonly string connectionString = "Data Source=10.0.0.84;Initial Catalog=VEGADB;User ID=sa;Password=123456a.A;Trust Server Certificate=True";
+        private readonly string connectionString = "Data Source=.;Initial Catalog=ARCTOS;User ID=sa;Password=123456a.A;Trust Server Certificate=True";
 
-        public async Task<List<string>> SearchItemsAsync(string query)
+        public async Task<List<Cari>> SearchItemsAsync(string query)
         {
-            var results = new List<string>();
+            var results = new List<Cari>();
 
             using (var connection = new SqlConnection(connectionString))
             {
                 await connection.OpenAsync();
-                var command = new SqlCommand("SELECT FIRMAADI FROM F0103TBLCARI WHERE FIRMAADI LIKE @Query", connection);
-                command.Parameters.AddWithValue("@Query", $"%{query}%");
+                var sql = "SELECT FIRMAKODU, FIRMAADI, YETKILI, VERGIDAIRESI, ISKONTO, TELEFON1, KOD1 " +
+                          "FROM TBLCARI WHERE FIRMAADI LIKE @Query";
 
-                using (var reader = await command.ExecuteReaderAsync())
+                using (var command = new SqlCommand(sql, connection))
                 {
-                    while (await reader.ReadAsync())
+                    command.Parameters.AddWithValue("@Query", $"%{query}%");
+
+                    using (var reader = await command.ExecuteReaderAsync())
                     {
-                        results.Add(reader.GetString(0));
+                        while (await reader.ReadAsync())
+                        {
+                            results.Add(new Cari
+                            {
+                                FirmaKodu = reader.GetString(0),
+                                FirmaAdi = reader.GetString(1),
+                                Yetkili = reader.GetString(2),
+                                VergiDairesi = reader.GetString(3),
+                                Iskonto = reader.GetDecimal(4),
+                                Telefon1 = reader.GetString(5),
+                                Kod1 = reader.GetString(6)
+                            });
+                        }
                     }
                 }
             }

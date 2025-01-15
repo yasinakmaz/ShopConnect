@@ -6,7 +6,25 @@
              Title="CashSalePage">
 
     <Shell.SearchHandler>
-        <SearchHandler ShowsResults="True"/>
+        <local:CustomSearchHandler x:Name="SrcMainCari" Placeholder="Cari Arama..." ShowsResults="True">
+            <local:CustomSearchHandler.ItemTemplate>
+                <DataTemplate>
+                    <Border Stroke="White" HeightRequest="100" StrokeShape="RoundRectangle 10">
+                        <Grid RowDefinitions="*,*,*" Margin="10">
+                            <Label Grid.Row="0" Text="{Binding FirmaKodu}" HorizontalOptions="Start"></Label>
+                            <Label Grid.Row="0" Text="{Binding FirmaAdi}" HorizontalOptions="Center"></Label>
+                            <Label Grid.Row="0" Text="{Binding Yetkili}" HorizontalOptions="End"></Label>
+
+                            <Label Grid.Row="1" Text="{Binding VergiDairesi}" HorizontalOptions="Start"></Label>
+                            <Label Grid.Row="1" Text="{Binding Iskonto}" HorizontalOptions="Center"></Label>
+
+                            <Label Grid.Row="2" Text="{Binding Telefon1}" HorizontalOptions="Start"></Label>
+                            <Label Grid.Row="2" Text="{Binding Kod1}" HorizontalOptions="End"></Label>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </local:CustomSearchHandler.ItemTemplate>
+        </local:CustomSearchHandler>
     </Shell.SearchHandler>
 
     <Grid x:Name="GrdMain">
